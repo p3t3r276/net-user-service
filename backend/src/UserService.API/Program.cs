@@ -32,7 +32,13 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("AdminOrManager", policy =>
+        policy.RequireRole("Admin", "Manager"))
+    .AddPolicy("AnyStaff", policy =>
+        policy.RequireRole("Admin", "Manager", "User"))
+    .AddPolicy("AdminOnly", policy =>
+        policy.RequireRole("Admin"));
 builder.Services.AddControllers();
 
 var app = builder.Build();
