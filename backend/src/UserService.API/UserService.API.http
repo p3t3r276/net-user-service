@@ -1,6 +1,31 @@
 @UserService.API_HostAddress = http://localhost:5161
+@token = <your-jwt-token-here>
 
-GET {{UserService.API_HostAddress}}/weatherforecast/
-Accept: application/json
+### Login
+POST {{UserService.API_HostAddress}}/api/auth/login
+Content-Type: application/json
 
-###
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+
+### Get Profile (requires auth)
+GET {{UserService.API_HostAddress}}/api/secure/profile
+Authorization: Bearer {{token}}
+
+### Admin Only (requires Admin role)
+GET {{UserService.API_HostAddress}}/api/secure/admin
+Authorization: Bearer {{token}}
+
+### Management (requires Admin or Manager role)
+GET {{UserService.API_HostAddress}}/api/secure/management
+Authorization: Bearer {{token}}
+
+### Staff (requires Admin, Manager, or User role)
+GET {{UserService.API_HostAddress}}/api/secure/staff
+Authorization: Bearer {{token}}
+
+### Reports (requires Admin, Manager, or Analyst role)
+GET {{UserService.API_HostAddress}}/api/secure/reports
+Authorization: Bearer {{token}}
