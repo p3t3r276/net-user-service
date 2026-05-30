@@ -84,7 +84,7 @@ public class JwtService : IJwtService
         {
             _logger.LogError(ex, "ValidateToken-JwtService");
 
-            throw;
+            return null;
         }
     }
 }
