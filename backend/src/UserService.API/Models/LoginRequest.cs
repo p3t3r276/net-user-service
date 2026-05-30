@@ -1,3 +1,3 @@
 namespace UserService.API.Models;
 
-public record LoginRequest(string Email, string Password);
+public record LoginRequest(string Email = "user@example.com", string Password = "password123");

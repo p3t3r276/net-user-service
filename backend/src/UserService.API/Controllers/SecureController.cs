@@ -6,6 +6,7 @@ namespace UserService.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class SecureController : ControllerBase
 {
     [HttpGet("profile")]

@@ -1,5 +1,5 @@
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
+using UserService.API.Models;
 using UserService.API.Services;
 
 namespace UserService.API.Controllers;
